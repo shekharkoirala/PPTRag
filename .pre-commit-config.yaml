@@ -1,0 +1,21 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+    -   id: check-ast
+    -   id: check-byte-order-marker
+    -   id: check-case-conflict
+    -   id: check-executables-have-shebangs
+    -   id: check-json
+    -   id: detect-private-key
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+    -   id: mixed-line-ending
+
+#exclude frontend folder ( might not develop by myself )
+-   repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: 'v0.9.5'
+    hooks:
+    -   id: ruff
+        args: ["--fix"]
+        exclude: '^(frontend)/'
