@@ -1,4 +1,5 @@
-[2025/02/09]
+### [2025/02/09]
+
 I am thinking to use vllm instead of llama parse to get the data. I already know tools like https://www.eyelevel.ai/, where we can extract the images and use any vision model to extract the embeddings. This would be complex and expensive to code. 
 I found the paper published at 6 feb 2025: [ColPali: EFFICIENT DOCUMENT RETRIEVAL WITH VISION LANGUAGE MODELS](https://arxiv.org/pdf/2407.01449)
 
@@ -10,24 +11,29 @@ The generation models ( SMOLVLLM) run in GPU, it takes around 10-100 secs for th
 sample query:
 ```{
   "query": "what are the conocoPhillips Commercial Advantage, list them down."
-}```
+}
+```
 sample result:
+
 ```
 {
   "results": "User:<image>what are the conocoPhillips Commercial Advantage, list them down.\nAssistant: The conocoPhillips Commercial Advantage includes:\n- Port Arthur LNG Marketing Example: Sale into Germany\n- Global Marketing Presence: >10 BCFD and >1 MMBOD1\n- 9x Equity\n- 6.0 GWh\n- 1 MTPA\n- 113 MTPA\n- 2nd Largest\n- Utilizing Optimized Global LNG\n- Cascade® Process technology provider\n- 25 Cargoes\n- 45%\n- 180 MBOD\n- 25 Cargoes\n- 45%\n- 180 MBOD\n- 25 Cargoes\n- 45%\n- 180 MBOD\n- 25 Cargoes\n- 45%\n- 180 MBOD\n- 25 Cargoes\n- 45%\n- 180 MBOD\n- 25 Cargoes\n- 45%\n- 180 MBOD\n- 25 Cargoes\n- 45%\n- 180 MBOD\n- 25 Cargoes\n- 45%\n- 180 MBOD\n- 25 Cargoes\n- 45%\n- 180 MBOD\n- 25 Cargoes\n- 45%\n- 180 MBOD\n- 25 Cargoes\n- 45%\n- 180 MBOD\n- 25 Cargoes\n- 45%\n- 180 MBOD\n- 25 Cargoes\n- 45%\n- 180 MBOD\n- 25 Cargoes\n- 45%\n- 180 MBOD\n- 25 Cargoes\n- 45%\n- 180 MBOD\n- 25 Cargoes\n- 45%\n- 180 MBOD\n- 25 Cargoes\n- 45%\n- 180 MBOD\n- 25 Cargoes\n- 45%\n- 180 MBOD\n- 25 Cargoes\n- 45%"
-}```
+}
+```
 
 feedback:
 I would test with other generation model, it should perform alot better. 
 for the task, might need to focus on different things as frontend will be tested too. 
 
 
-[2025/02/08]
+### [2025/02/08]
+
 Tried Multiple Extraction tools from the pdf. The provided pdfs file capture the real world scenario as 2023's version are alll images. 
 I have tried pdfplumber, hotpdf, tessaract , unstructured, llama parse, pymupdf, pymupdf4llm etc. 
 Only unstructured and llama-parse could able to parse data from 2023's pdf. 
 for 2024's pdf, the pdf should be splitted into three part to be inside the free quota of lllama parse. 
 I will try to use llama parse for both of the document as it is the most accurate representation of data. 
 
-[2025/02/07]
+### [2025/02/07]
+
 General setup of repo: Will work 1/2 hr per day let' see. 
