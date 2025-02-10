@@ -1,3 +1,14 @@
+### [2025/02/10]
+will use [gemini model](https://github.com/googleapis/python-genai/releases) 
+This will substantially improve the generation part, I might send more images. 
+On top of that, Gemini api free tier limits:
+```
+10 RPM (requests per minute)
+10,000 TPM (tokens per minute)
+1,000 RPD (requests per day)
+```
+
+
 ### [2025/02/09]
 
 I am thinking to use vllm instead of llama parse to get the data. I already know tools like https://www.eyelevel.ai/, where we can extract the images and use any vision model to extract the embeddings. This would be complex and expensive to code. 

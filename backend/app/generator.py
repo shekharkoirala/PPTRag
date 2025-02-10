@@ -10,3 +10,6 @@ def load_generator_model():
                                                     quantization_config=quantization_config)
     return model, processor
 
+def load_gemini_model():
+    #TODO: implement genai model
+    pass
