@@ -1,3 +1,8 @@
+### [2025/02/20]
+started 10 days later, lets complete this project. 
+
+
+
 ### [2025/02/10]
 will use [gemini model](https://github.com/googleapis/python-genai/releases) 
 This will substantially improve the generation part, I might send more images. 
