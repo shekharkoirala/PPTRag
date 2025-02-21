@@ -373,6 +373,7 @@ dependencies = [
     { name = "unstructured-inference" },
     { name = "unstructured-paddleocr" },
     { name = "unstructured-pytesseract" },
+    { name = "uvicorn" },
     { name = "wheel" },
 ]
 
@@ -415,6 +416,7 @@ requires-dist = [
     { name = "unstructured-inference", specifier = "==0.8.5" },
     { name = "unstructured-paddleocr", specifier = "==2.8.1.0" },
     { name = "unstructured-pytesseract", specifier = ">=0.3.12" },
+    { name = "uvicorn", specifier = ">=0.34.0" },
     { name = "wheel", specifier = ">=0.45.1" },
 ]
 
