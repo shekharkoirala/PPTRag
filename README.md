@@ -3,12 +3,46 @@ A complete offline, local multi modal RAG system.
 
 # Installation 
 
-### Using Docker
-This is experimental.
+### Using Docker compose
 
+1. clone the repo. 
+```
+git clone https://github.com/shekharkoirala/PPTRag.git
+cd PPTRag
+```
+2. Download the embeddings and put it inside the backend folder. 
+```
+https://drive.google.com/file/d/1eA1tGJQQJjKJmYToEapYhA918lNnSCb1/view?usp=sharing
+```
+
+```
+📂 backend
+├── 📂 .byaldi
+│   ├── 📂 reports
+│   │   ├── doc_ids_to_file_names.json.gz
+│   │   ├── embed_id_to_doc_id.json.gz
+│   │   ├── index_config.json.gz
+│   │   ├── metadata.json.gz
+├── 📂 app
+│   ├── __pycache__
+│   ├── generator.py
+│   ├── main.py
+
+Make sure the folder structure matches the structure when you unzip it
+```
+3. Run the docker compose
 ```
 docker compose up --build
 ```
+4. wait till server properly loads up. 
+![backend logs](docs/imgs/backend-logs.png)
+You will see the logs of smollVlm model being loaded. 
+
+5. Browse the rag. 
+```
+http://localhost:80/
+```
+You might have to wait 10-15 minutes for the initial first messages. but usually it give answers in 1 minutes. 
 
 or 
 

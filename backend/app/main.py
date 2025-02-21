@@ -1,8 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from models import SearchRequest, SearchResponse
 from fastapi.middleware.cors import CORSMiddleware
-from retriever import load_rag_model
-from generator import load_generator_model
+from app.retriever import load_rag_model
+from app.generator import load_generator_model
 import torch
 import time
 from PIL import Image
@@ -35,7 +35,7 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # Allow frontend requests
+    allow_origins=["*"],  # Allow frontend requests
     allow_credentials=True,
     allow_methods=["*"],  # Allow all HTTP methods (POST, GET, etc.)
     allow_headers=["*"],  # Allow all headers

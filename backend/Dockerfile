@@ -18,23 +18,25 @@ ENV UV_LINK_MODE=copy
 # Set the working directory
 WORKDIR /app
 
-# Set PYTHONPATH
-ENV PYTHONPATH=/backend
-
 # # Copy the FastAPI application code
-COPY ./app /app
+COPY ./app /app/app
+
+RUN echo "Contents of /app after copying app:" && ls -lah /app
 
 # Copy pyproject.toml and uv.lock for dependency management
 COPY pyproject.toml uv.lock ./
 
 # Install the application dependencies
-RUN uv venv --python 3.9
-RUN uv pip install --no-cache --system torch torchvision setuptools wheel
-RUN uv pip install --no-cache --system flash-attn --no-build-isolation 
-RUN uv pip install --no-cache --system .
+RUN uv pip install --system torch torchvision setuptools wheel
+RUN uv pip install --system flash-attn --no-build-isolation 
+
+RUN echo "Contents of /app after copying app:" && ls -lah 
+RUN uv pip install --system .
 
 # Expose the backend port
 EXPOSE 8000
+
+ENV PYTHONPATH="/app/app"
 
 # Command to run the backend using Uvicorn
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
