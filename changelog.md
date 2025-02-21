@@ -1,6 +1,9 @@
+###[2025/02/21]
+Added docker compose ( experimental ) for better support of deployment. 
+
 ### [2025/02/20]
 started 10 days later, lets complete this project. 
-
+Added frontend system. 
 
 
 ### [2025/02/10]
