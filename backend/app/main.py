@@ -1,11 +1,13 @@
 from fastapi import FastAPI, HTTPException
 from models import SearchRequest, SearchResponse
+from fastapi.middleware.cors import CORSMiddleware
 from retriever import load_rag_model
 from generator import load_generator_model
 import torch
 import time
 from PIL import Image
 from transformers.image_utils import load_image
+from utils import encode_image
 from contextlib import asynccontextmanager
     
 rag_models = {}
@@ -26,6 +28,18 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 
+origins = [
+    "http://localhost:5173",  # Your React frontend URL
+    "http://127.0.0.1:5173",  # Alternative URL
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # Allow frontend requests
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all HTTP methods (POST, GET, etc.)
+    allow_headers=["*"],  # Allow all headers
+)
 
 @app.post("/search", response_model=SearchResponse)
 async def rag_search(query: SearchRequest) -> SearchResponse:
@@ -37,6 +51,7 @@ async def rag_search(query: SearchRequest) -> SearchResponse:
     
     print(f" get result from the rag {time.perf_counter() - s} seconds")
     images = [load_image(result.base64) for result in results]
+    encoded_images = [result.base64 for result in results]
     
     messages =  construct_message(query.query)
     prompt = rag_models["processor"].apply_chat_template(messages, add_generation_prompt=True)
@@ -53,7 +68,7 @@ async def rag_search(query: SearchRequest) -> SearchResponse:
 
     print(generated_texts[0])    
     print(f" generated response in {time.perf_counter() - s} seconds")
-    return SearchResponse(results= generated_texts[0])
+    return SearchResponse(results= generated_texts[0], images=encoded_images)
     
     
 

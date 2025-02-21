@@ -6,6 +6,7 @@ class SearchRequest(BaseModel):
 
 class SearchResponse(BaseModel):
     results: str
+    images: list[str]
 
 class ComparisonRequest(BaseModel):
     doc1_id: str
